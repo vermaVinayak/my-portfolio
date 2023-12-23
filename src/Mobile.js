@@ -1,31 +1,85 @@
 import { useState } from 'react';
 import image from './pokemonFightBackground.webp'
+import deviceCover from './assets/pokedexCover.png'
 
-const Bio = ({changeWindow}) => {
+
+const Bio = ({ changeWindow }) => {
   const imgContainerStyle = {
+    height: 125, // Set the height to 100% of the viewport height
+    width: 125,
+    marginTop: 15,
+    marginBottom: 15,
+  }
+  const titleStyle = {
+    textAlign: 'center',
+    border: '2px solid black',
+    marginLeft: 10,
+    marginRight: 10,
+  }
+  const bioTypography = {
+    margin: 0,
+  }
+  const gridContainer = {
+    display: 'grid',
+    gap: 0,
+    backgroundColor: 'green',
+    gridTemplateColumns: 'auto auto auto auto auto',
+    marginTop: 5
+  }
+  const leftBioItem = {
+    gridColumnStart: 1,
+    gridColumnEnd: 5,
+    backgroundColor: 'orange',
+    border: '1px solid black'
+  }
+  const rightBioItem = {
+    gridColumnStart: 5,
+    gridColumnEnd: 6,
+    backgroundColor: 'orange',
+    border: '1px solid black',
     display: 'flex', // flexbox property
     alignItems: 'center', // vertically centre child div
     justifyContent: 'center', // horizontally center the child div
-    height: 250, // Set the height to 100% of the viewport height
-    backgroundColor: 'blue'
+  }
+  const leftHistoryItem = {
+    gridColumnStart: 1,
+    gridColumnEnd: 3,
+    backgroundColor: 'orange',
+    border: '1px solid black'
+  }
+  const rightHistoryItem = {
+    gridColumnStart: 3,
+    gridColumnEnd: 6,
+    backgroundColor: 'orange',
+    border: '1px solid black'
   }
   return (
-    <div style={{ backgroundColor: 'green', width: 300 }}>
-      <div style={imgContainerStyle}>
-        <img style={{ width: 200, height: 200 }} src={image} alt='background'></img>
+    <>
+      <div style={titleStyle} >Pokedex</div>
+      <div style={gridContainer}>
+        <div style={leftBioItem}>
+          <p style={bioTypography}>Species: Lorem Ipsum</p>
+          <p style={bioTypography}>Name: Lorem Ipsum</p>
+          <p style={bioTypography}>Github: kll3j#lkwerlke</p>
+          <p style={bioTypography}>LinkedIn: sdfsdfsdf</p>
+          <p style={bioTypography}>Email: 124@gmai.com</p>
+
+
+          
+        </div>
+        <div style={rightBioItem}>
+          <img style={imgContainerStyle} src={image}></img>
+        </div>
+        <div style={leftHistoryItem}>1</div>
+        <div style={rightHistoryItem}>2</div>
       </div>
-      <ul style={{marginBottom: 0, marginTop: 0}}>
-        <li>Name: Lorem Ipsum</li>
-        <li>Age: 2343</li>
-        <li onClick={() => {console.log('child clicked!'); changeWindow('project 1')}}>Hobbies: Guitar</li>
-      </ul>
-    </div>
+    </>
   )
 }
 const History = () => {
   return (
     <div style={{ backgroundColor: 'orange' }}>
-      <h3 style ={{marginTop:'0'}}>Projects</h3>
+      <h3 style={{ marginTop: '0' }}>Projects</h3>
       <ul>
         <li onClick={() => { console.log(3) }}>Project 1</li>
         <li>Project 2</li>
@@ -38,14 +92,30 @@ const History = () => {
     </div>
   )
 }
-const Pokedex = () => {
+const Display = () => {
+  // styles
+  const topCoverStyle = {
+    width: 300,
+    height: 125,
+  }
+  const bottomCoverStyle = {
+    width: 300,
+    height: 125,
+    transform: 'rotate(180deg)'
+  }
+
+
+  // states
   const [window, setWindow] = useState('bio')
 
   if (window === 'bio') {
     return (
-      <div style={{ backgroundColor: 'red', width: 300, height: 500 }}>
+      <div style={{ backgroundColor: 'red', width: 300, }}>
+        <img style={topCoverStyle} src={deviceCover}></img>
+
         <Bio changeWindow={setWindow} />
-        <History/>
+        {/* <History /> */}
+        <img style={bottomCoverStyle} src={deviceCover}></img>
       </div>
     )
   } else if (window === 'project 1') {
@@ -62,7 +132,7 @@ const Pokedex = () => {
     )
   }
 }
-const Background = () => {
+const device = () => {
   const containerStyle = {
     display: 'flex', // flexbox property
     alignItems: 'center', // vertically centre child div
@@ -71,9 +141,9 @@ const Background = () => {
   };
   return (
     <div style={containerStyle}>
-      <Pokedex />
+      <Display />
     </div>
   )
 }
 
-export default Background;
+export default device;
