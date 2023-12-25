@@ -1,98 +1,95 @@
 import { useState } from 'react';
-import image from './pokemonFightBackground.webp'
+// import image from './pokemonFightBackground.webp'
 import deviceCover from './assets/pokedexCover.png'
 
-
-const Bio = ({ changeWindow }) => {
-  const imgContainerStyle = {
-    height: 125, // Set the height to 100% of the viewport height
-    width: 125,
-    marginTop: 15,
-    marginBottom: 15,
-  }
-  const titleStyle = {
-    textAlign: 'center',
-    border: '2px solid black',
-    marginLeft: 10,
-    marginRight: 10,
-  }
-  const bioTypography = {
-    margin: 0,
-  }
-  const gridContainer = {
-    display: 'grid',
-    gap: 0,
-    backgroundColor: 'green',
-    gridTemplateColumns: 'auto auto auto auto auto',
-    marginTop: 5
-  }
-  const leftBioItem = {
-    gridColumnStart: 1,
-    gridColumnEnd: 5,
-    backgroundColor: 'orange',
-    border: '1px solid black'
-  }
-  const rightBioItem = {
-    gridColumnStart: 5,
-    gridColumnEnd: 6,
-    backgroundColor: 'orange',
-    border: '1px solid black',
-    display: 'flex', // flexbox property
-    alignItems: 'center', // vertically centre child div
-    justifyContent: 'center', // horizontally center the child div
-  }
-  const leftHistoryItem = {
-    gridColumnStart: 1,
-    gridColumnEnd: 3,
-    backgroundColor: 'orange',
-    border: '1px solid black'
-  }
-  const rightHistoryItem = {
-    gridColumnStart: 3,
-    gridColumnEnd: 6,
-    backgroundColor: 'orange',
-    border: '1px solid black'
-  }
-  return (
-    <>
-      <div style={titleStyle} >Pokedex</div>
-      <div style={gridContainer}>
-        <div style={leftBioItem}>
-          <p style={bioTypography}>Species: Lorem Ipsum</p>
-          <p style={bioTypography}>Name: Lorem Ipsum</p>
-          <p style={bioTypography}>Github: kll3j#lkwerlke</p>
-          <p style={bioTypography}>LinkedIn: sdfsdfsdf</p>
-          <p style={bioTypography}>Email: 124@gmai.com</p>
-
-
-          
-        </div>
-        <div style={rightBioItem}>
-          <img style={imgContainerStyle} src={image}></img>
-        </div>
-        <div style={leftHistoryItem}>1</div>
-        <div style={rightHistoryItem}>2</div>
-      </div>
-    </>
-  )
-}
-const History = () => {
-  return (
-    <div style={{ backgroundColor: 'orange' }}>
-      <h3 style={{ marginTop: '0' }}>Projects</h3>
-      <ul>
-        <li onClick={() => { console.log(3) }}>Project 1</li>
-        <li>Project 2</li>
-      </ul>
-      <h3>Experience</h3>
-      <ul>
-        <li>Experience 1</li>
-        <li>Experience 2</li>
-      </ul>
-    </div>
-  )
-}
 const Display = () => {
+  // styles
+  const bioContainer = {
+    display: 'flex',
+    backgroundColor: 'cyan',
+    width: 300,
+    justifyContent: 'flex-start'
+  }
+  const flexItem1 = {
+    height: 100,
+    width: 175,
+    backgroundColor: 'yellow',
+    border: '1px solid black',
+    margin: 5
+  }
+  const flexItem2 = {
+    height: 100,
+    width: 100,
+    backgroundColor: 'yellow',
+    border: '1px solid black',
+    margin: 5
+  }
+  const displayTitle = {
+    border: '1px solid white',
+    display: 'flex',
+    justifyContent: 'center',
+    backgroundColor: 'lightblue'
+  }
+  const historyColumn1 = {
+    display: 'inline-block',
+    backgroundColor: 'lightgreen',
+    width: 100,
+    height: 45,
+    margin: 5,
+  }
+  const historyColumn2 = {
+    display: 'inline-block',
+    backgroundColor: 'orange',
+    width: 175,
+    height: 45,
+    margin: 5,
+  }
+  // states
+  const [display, setDisplay] = useState('bio')
+
+  if (display === 'bio') {
+    return (
+      <div style={{backgroundColor: 'purple'}}>
+        {/* Display title */}
+        <div style={displayTitle}>Pokedex</div>
+        {/* Display bio */}
+        <div style={bioContainer}>
+          <div style={flexItem1}>item 1</div>
+          <div style={flexItem2}>item 2</div>
+        </div>
+        {/* Display project, experience etc... */}
+        <div>
+          <div style={historyColumn1}>col 1</div>
+          <div style={historyColumn2}>col 2</div>
+        </div>
+        <div>
+          <div style={historyColumn1}>col 1</div>
+          <div style={historyColumn2}>col 2</div>
+        </div>
+        <div>
+          <div style={historyColumn1}>col 1</div>
+          <div style={historyColumn2}>col 2</div>
+        </div>
+        <div>
+          <div style={historyColumn1}>col 1</div>
+          <div style={historyColumn2}>col 2</div>
+        </div>
+      </div>
+    )
+  } else if (display === 'project 1') {
+    return (
+      <div style={{ backgroundColor: 'red', width: 300, height: 500 }}>
+        <button onClick={() => setDisplay('bio')}>Back</button>
+        <h3>Project 1</h3>
+        <ul>
+          <li>Description</li>
+          <li>image</li>
+        </ul>
+      </div>
+    )
+  }
+}
+const Device = () => {
   // styles
   const topCoverStyle = {
     width: 300,
@@ -103,47 +100,32 @@ const Display = () => {
     height: 125,
     transform: 'rotate(180deg)'
   }
-
-
-  // states
-  const [window, setWindow] = useState('bio')
-
-  if (window === 'bio') {
-    return (
-      <div style={{ backgroundColor: 'red', width: 300, }}>
-        <img style={topCoverStyle} src={deviceCover}></img>
-
-        <Bio changeWindow={setWindow} />
-        {/* <History /> */}
-        <img style={bottomCoverStyle} src={deviceCover}></img>
-      </div>
-    )
-  } else if (window === 'project 1') {
-    return (
-      <div style={{ backgroundColor: 'red', width: 300, height: 500 }}>
-        <button onClick={() => setWindow('bio')}>Back</button>
-        <h3>Project 1</h3>
-        <ul>
-          <li>Description</li>
-          <li>image</li>
-
-        </ul>
-      </div>
-    )
-  }
-}
-const device = () => {
   const containerStyle = {
     display: 'flex', // flexbox property
     alignItems: 'center', // vertically centre child div
     justifyContent: 'center', // horizontally center the child div
     height: '100vh', // Set the height to 100% of the viewport height
-  };
+  }
+
   return (
     <div style={containerStyle}>
-      <Display />
+      <div style={{ backgroundColor: 'light green', width: 300, }}>
+        <img alt='device top cover' style={topCoverStyle} src={deviceCover}></img>
+        <Display />
+        <img alt='device bottom cover' style={bottomCoverStyle} src={deviceCover}></img>
+      </div>
+    </div>
+  )
+
+  /*
+  
+  */
+}
+const Background = () => {
+  return (
+    <div style={{ backgroundColor: 'pink', width: '100vw', height: '100vh' }}>
+      <Device />
     </div>
   )
 }
-
-export default device;
+export default Background;
