@@ -1,6 +1,7 @@
 import { useState } from 'react';
 // import image from './pokemonFightBackground.webp'
 import deviceCover from './assets/pokedexCover.png'
+import userData from './assets/data';
 
 const Display = () => {
   // styles
@@ -31,25 +32,42 @@ const Display = () => {
     backgroundColor: 'lightblue'
   }
   const historyColumn1 = {
-    display: 'inline-block',
+    // display: 'inline-block',
     backgroundColor: 'lightgreen',
     width: 100,
     height: 45,
     margin: 5,
   }
   const historyColumn2 = {
-    display: 'inline-block',
+    // display: 'inline-block',
     backgroundColor: 'orange',
     width: 175,
     height: 45,
     margin: 5,
   }
+
+  // helper functions
+  const displayHistory = (data) => {
+    let content = [];
+    let template = (
+      <div style={{ display: 'flex' }}>
+        <div style={historyColumn1}>col 1</div>
+        <div style={historyColumn2}>{content}</div>
+      </div>
+    )
+
+    for (let i = 0; i < data.history.length; i++) {
+      content.push(<button style={{ margin: 5 }}>{"test"}</button>)
+    }
+    return content
+  }
+
   // states
   const [display, setDisplay] = useState('bio')
 
   if (display === 'bio') {
     return (
-      <div style={{backgroundColor: 'purple'}}>
+      <div style={{ backgroundColor: 'purple' }}>
         {/* Display title */}
         <div style={displayTitle}>Pokedex</div>
         {/* Display bio */}
@@ -58,22 +76,31 @@ const Display = () => {
           <div style={flexItem2}>item 2</div>
         </div>
         {/* Display project, experience etc... */}
-        <div>
+
+        {displayHistory(userData)}
+
+        {/* <div style={{display: 'flex'}}>
           <div style={historyColumn1}>col 1</div>
-          <div style={historyColumn2}>col 2</div>
+          <div style={historyColumn2}>
+            {displayHistory(userData.experience)}
+          </div>
         </div>
-        <div>
+        <div style={{display: 'flex'}}>
           <div style={historyColumn1}>col 1</div>
-          <div style={historyColumn2}>col 2</div>
-        </div>
-        <div>
+          <div style={historyColumn2}>
+            {displayHistory(userData.experience)}
+          </div>
+        </div><div style={{display: 'flex'}}>
           <div style={historyColumn1}>col 1</div>
-          <div style={historyColumn2}>col 2</div>
-        </div>
-        <div>
+          <div style={historyColumn2}>
+            {displayHistory(userData.experience)}
+          </div>
+        </div><div style={{display: 'flex'}}>
           <div style={historyColumn1}>col 1</div>
-          <div style={historyColumn2}>col 2</div>
-        </div>
+          <div style={historyColumn2}>
+            {displayHistory(userData.experience)}
+          </div>
+        </div> */}
       </div>
     )
   } else if (display === 'project 1') {
@@ -106,13 +133,18 @@ const Device = () => {
     justifyContent: 'center', // horizontally center the child div
     height: '100vh', // Set the height to 100% of the viewport height
   }
+  const deviceScreen = {
+    backgroundColor: 'white',
+  }
 
   return (
     <div style={containerStyle}>
-      <div style={{ backgroundColor: 'light green', width: 300, }}>
-        <img alt='device top cover' style={topCoverStyle} src={deviceCover}></img>
-        <Display />
-        <img alt='device bottom cover' style={bottomCoverStyle} src={deviceCover}></img>
+      <div style={deviceScreen}>
+        <div style={{ backgroundColor: 'light green', width: 300, }}>
+          <img alt='device top cover' style={topCoverStyle} src={deviceCover}></img>
+          <Display />
+          <img alt='device bottom cover' style={bottomCoverStyle} src={deviceCover}></img>
+        </div>
       </div>
     </div>
   )
