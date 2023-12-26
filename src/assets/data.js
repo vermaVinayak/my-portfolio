@@ -1,16 +1,47 @@
 const userData = {
     name: 'Vinayak Verma',
     email: 'vinayak.vverma@gmail.com',
-    projects: ['p 1', 'p 2'],
-    experience: ['e 1', 'e 2', 'e 3'],
     history: {
         projects: {
-           name: 'projects',
-           items: ['p 1', 'p 2']
+           p1: {
+            link: 'https.sll.sldfk.',
+           },
+           p2: {
+            link: 'sdfsdfdf',
+           },
+           p3: {
+            link: 'sdfsdfdf',
+           }
         },
         experience: {
-            name: 'experience',
-            items: ['e 1', 'e 2']
+            asbuilt: {
+                bio: 'ksdfkdsf',
+                projectInfo: 'sdfsdfsdf',
+            },
+            test2: {
+                bio: 'ksdfkdsf',
+                projectInfo: 'sdfsdfsdf',
+            }
+         },
+         reference: {
+            asbuilt: {
+                bio: 'ksdfkdsf',
+                projectInfo: 'sdfsdfsdf',
+            },
+            test2: {
+                bio: 'ksdfkdsf',
+                projectInfo: 'sdfsdfsdf',
+            }
+         },
+         test: {
+            asbuilt: {
+                bio: 'ksdfkdsf',
+                projectInfo: 'sdfsdfsdf',
+            },
+            test2: {
+                bio: 'ksdfkdsf',
+                projectInfo: 'sdfsdfsdf',
+            }
          },
     }
 }

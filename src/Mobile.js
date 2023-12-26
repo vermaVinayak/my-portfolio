@@ -3,7 +3,22 @@ import { useState } from 'react';
 import deviceCover from './assets/pokedexCover.png'
 import userData from './assets/data';
 
-const Display = () => {
+const Details = ({heading, description, img, updateParentDisplay}) => {
+  // styles
+  const detailsContainer = {
+    height: 300,
+  }
+  return (
+    <div style={detailsContainer}>
+      <button onClick={() => {updateParentDisplay('')}}>back</button>
+      <div>{heading}</div>
+      <div>{description}</div>
+      <img src={img}></img>
+
+    </div>
+  )
+}
+const BioAndHistory = ({setParentDisplay, fetchData}) => {
   // styles
   const bioContainer = {
     display: 'flex',
@@ -32,40 +47,60 @@ const Display = () => {
     backgroundColor: 'lightblue'
   }
   const historyColumn1 = {
-    // display: 'inline-block',
+    display: 'flex',
+    alignItems: 'center',
     backgroundColor: 'lightgreen',
     width: 100,
-    height: 45,
+    height: 25,
     margin: 5,
   }
   const historyColumn2 = {
-    // display: 'inline-block',
+    display: 'flex',
     backgroundColor: 'orange',
     width: 175,
-    height: 45,
+    height: 25,
     margin: 5,
+    alignItems: 'center'
   }
 
   // helper functions
   const displayHistory = (data) => {
-    let content = [];
-    let template = (
-      <div style={{ display: 'flex' }}>
-        <div style={historyColumn1}>col 1</div>
-        <div style={historyColumn2}>{content}</div>
-      </div>
-    )
+    let template = []
+    let content = []
 
-    for (let i = 0; i < data.history.length; i++) {
-      content.push(<button style={{ margin: 5 }}>{"test"}</button>)
+    // access stored data
+    for (let key in data.history) {
+      content = []
+      if (data.history.hasOwnProperty(key)) {
+        // access further nested data
+        for (let nestedKey in data.history[key]) {
+          if (data.history.hasOwnProperty(key)) {
+            content.push(<button
+            onClick={() => {
+              fetchData(nestedKey, 'description', 'img source')
+              setParentDisplay('Details')
+            }}
+              style={{
+                marginRight: 2,
+                width: 58,
+                height: 20,
+                fontSize: 10,
+                padding: 0
+              }}>
+              {nestedKey}
+            </button>)
+          }
+        }
+      }
+      template.push(
+        <div style={{ display: 'flex' }}>
+          <div style={historyColumn1}>{key}:</div>
+          <div style={historyColumn2}>{content}</div>
+        </div>
+      )
     }
-    return content
+    return template
   }
-
-  // states
-  const [display, setDisplay] = useState('bio')
-
-  if (display === 'bio') {
     return (
       <div style={{ backgroundColor: 'purple' }}>
         {/* Display title */}
@@ -76,45 +111,27 @@ const Display = () => {
           <div style={flexItem2}>item 2</div>
         </div>
         {/* Display project, experience etc... */}
-
         {displayHistory(userData)}
+      </div>
+    )
+}
+const Display = () => {
+  const [display, setDisplay] = useState('')
 
-        {/* <div style={{display: 'flex'}}>
-          <div style={historyColumn1}>col 1</div>
-          <div style={historyColumn2}>
-            {displayHistory(userData.experience)}
-          </div>
-        </div>
-        <div style={{display: 'flex'}}>
-          <div style={historyColumn1}>col 1</div>
-          <div style={historyColumn2}>
-            {displayHistory(userData.experience)}
-          </div>
-        </div><div style={{display: 'flex'}}>
-          <div style={historyColumn1}>col 1</div>
-          <div style={historyColumn2}>
-            {displayHistory(userData.experience)}
-          </div>
-        </div><div style={{display: 'flex'}}>
-          <div style={historyColumn1}>col 1</div>
-          <div style={historyColumn2}>
-            {displayHistory(userData.experience)}
-          </div>
-        </div> */}
-      </div>
-    )
-  } else if (display === 'project 1') {
-    return (
-      <div style={{ backgroundColor: 'red', width: 300, height: 500 }}>
-        <button onClick={() => setDisplay('bio')}>Back</button>
-        <h3>Project 1</h3>
-        <ul>
-          <li>Description</li>
-          <li>image</li>
-        </ul>
-      </div>
-    )
+  // variables and callbacks for fetching child component data
+  let heading = ''
+  let description = ''
+  let img
+  let fetchData = (fetchedHeading, fetchedDescription, fetchedImg) => {
+    heading = fetchedHeading
+    description = fetchedDescription
+    img = fetchedImg
   }
+  console.log(heading, description, img)
+  // conditional rendering
+  if (display === 'Details') return <Details heading={display} description={description} img={img} updateParentDisplay={setDisplay}/>
+  // default
+  return  <BioAndHistory setParentDisplay={setDisplay} fetchData={fetchData}/>
 }
 const Device = () => {
   // styles
