@@ -3,22 +3,26 @@ import { useState } from 'react';
 import deviceCover from './assets/pokedexCover.png'
 import userData from './assets/data';
 
-const Details = ({heading, description, img, updateParentDisplay}) => {
+const Details = ({ setDisplay, heading, description, img }) => {
   // styles
   const detailsContainer = {
     height: 300,
   }
+
+  // helper functions
+  const handleBackbutton = () => setDisplay('')
+
   return (
     <div style={detailsContainer}>
-      <button onClick={() => {updateParentDisplay('')}}>back</button>
+      <button onClick={() => setDisplay('')}>back</button>
       <div>{heading}</div>
       <div>{description}</div>
-      <img src={img}></img>
+      <img style={{height: 125}}src={img}></img>
 
     </div>
   )
 }
-const BioAndHistory = ({setParentDisplay, fetchData}) => {
+const BioAndHistory = ({ setDisplay, setHeading, setDescription, setImg }) => {
   // styles
   const bioContainer = {
     display: 'flex',
@@ -64,6 +68,13 @@ const BioAndHistory = ({setParentDisplay, fetchData}) => {
   }
 
   // helper functions
+  const handleButton = (heading, description, img) => {
+    setHeading(heading)
+    setDescription(description)
+    setImg(img)
+    setDisplay('Details')
+  }
+
   const displayHistory = (data) => {
     let template = []
     let content = []
@@ -76,10 +87,7 @@ const BioAndHistory = ({setParentDisplay, fetchData}) => {
         for (let nestedKey in data.history[key]) {
           if (data.history.hasOwnProperty(key)) {
             content.push(<button
-            onClick={() => {
-              fetchData(nestedKey, 'description', 'img source')
-              setParentDisplay('Details')
-            }}
+              onClick={() => handleButton(nestedKey, 'test_description', data.history[key][nestedKey].imgSource)}
               style={{
                 marginRight: 2,
                 width: 58,
@@ -101,37 +109,47 @@ const BioAndHistory = ({setParentDisplay, fetchData}) => {
     }
     return template
   }
-    return (
-      <div style={{ backgroundColor: 'purple' }}>
-        {/* Display title */}
-        <div style={displayTitle}>Pokedex</div>
-        {/* Display bio */}
-        <div style={bioContainer}>
-          <div style={flexItem1}>item 1</div>
-          <div style={flexItem2}>item 2</div>
-        </div>
-        {/* Display project, experience etc... */}
-        {displayHistory(userData)}
+  return (
+    <div style={{ backgroundColor: 'purple' }}>
+      {/* Display title */}
+      <div style={displayTitle}>Pokedex</div>
+      {/* Display bio */}
+      <div style={bioContainer}>
+        <div style={flexItem1}>item 1</div>
+        <div style={flexItem2}>item 2</div>
       </div>
-    )
+      {/* Display project, experience etc... */}
+      {displayHistory(userData)}
+    </div>
+  )
 }
 const Display = () => {
+  // state
   const [display, setDisplay] = useState('')
+  const [heading, setHeading] = useState('')
+  const [description, setDescription] = useState('')
+  const [img, setImg] = useState('')
 
-  // variables and callbacks for fetching child component data
-  let heading = ''
-  let description = ''
-  let img
-  let fetchData = (fetchedHeading, fetchedDescription, fetchedImg) => {
-    heading = fetchedHeading
-    description = fetchedDescription
-    img = fetchedImg
-  }
-  console.log(heading, description, img)
   // conditional rendering
-  if (display === 'Details') return <Details heading={display} description={description} img={img} updateParentDisplay={setDisplay}/>
+  if (display === 'Details') {
+    return (
+      <Details
+        setDisplay={setDisplay}
+        heading={heading}
+        description={description}
+        img={img}
+      />
+    )
+  }
   // default
-  return  <BioAndHistory setParentDisplay={setDisplay} fetchData={fetchData}/>
+  return (
+    <BioAndHistory
+      setDisplay={setDisplay}
+      setHeading={setHeading}
+      setDescription={setDescription}
+      setImg={setImg}
+    />
+  )
 }
 const Device = () => {
   // styles

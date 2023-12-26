@@ -1,3 +1,5 @@
+import pikachuImg from './Pikachu.webp'
+
 const userData = {
     name: 'Vinayak Verma',
     email: 'vinayak.vverma@gmail.com',
@@ -5,6 +7,7 @@ const userData = {
         projects: {
            p1: {
             link: 'https.sll.sldfk.',
+            imgSource: pikachuImg
            },
            p2: {
             link: 'sdfsdfdf',
