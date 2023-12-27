@@ -1,51 +1,46 @@
-import pikachuImg from './Pikachu.webp'
+import userImage from './profilePic2Edited.png'
+import shortcutsTeamImage from './shortcutsTeam.jpeg'
 
 const userData = {
     name: 'Vinayak Verma',
+    userImage: userImage,
     email: 'vinayak.vverma@gmail.com',
     history: {
-        projects: {
-           p1: {
-            link: 'https.sll.sldfk.',
-            imgSource: pikachuImg
-           },
-           p2: {
-            link: 'sdfsdfdf',
-           },
-           p3: {
-            link: 'sdfsdfdf',
-           }
+        Projects: {
+            Shortcuts: {
+                link: 'https://github.com/vermaVinayak/shortcuts-stars-v',
+                description: `
+                 Collaborated on a 2-day hackathon to create a tourist tips app.
+                 Which showcased teamwork, prowess with ReactJS and rapid problem-solving 
+                 skills.
+                `,
+                imgSource: shortcutsTeamImage
+            },
+            pronounce: {
+                link: 'sdfsdfdf',
+                imgSource: '',
+            },
         },
-        experience: {
-            asbuilt: {
+        Experience: {
+            Asbuilt: {
                 bio: 'ksdfkdsf',
                 projectInfo: 'sdfsdfsdf',
             },
-            test2: {
+            Tutor: {
                 bio: 'ksdfkdsf',
                 projectInfo: 'sdfsdfsdf',
             }
-         },
-         reference: {
-            asbuilt: {
+        },
+        reference: {
+            Carlo: {
                 bio: 'ksdfkdsf',
                 projectInfo: 'sdfsdfsdf',
             },
-            test2: {
+            Anthony: {
                 bio: 'ksdfkdsf',
                 projectInfo: 'sdfsdfsdf',
             }
-         },
-         test: {
-            asbuilt: {
-                bio: 'ksdfkdsf',
-                projectInfo: 'sdfsdfsdf',
-            },
-            test2: {
-                bio: 'ksdfkdsf',
-                projectInfo: 'sdfsdfsdf',
-            }
-         },
+        },
     }
 }
 export default userData;

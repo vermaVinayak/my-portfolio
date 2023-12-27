@@ -1,28 +1,34 @@
 import { useState } from 'react';
 // import image from './pokemonFightBackground.webp'
 import deviceCover from './assets/pokedexCover.png'
-import userData from './assets/data';
+import userData from './assets/data'
 
-const Details = ({ setDisplay, heading, description, img }) => {
+const Details = ({ setDisplay, heading, description, img, link }) => {
   // styles
   const detailsContainer = {
     height: 300,
+    marginLeft: 5,
+    marginRight: 5,
   }
-
-  // helper functions
-  const handleBackbutton = () => setDisplay('')
 
   return (
     <div style={detailsContainer}>
       <button onClick={() => setDisplay('')}>back</button>
-      <div>{heading}</div>
-      <div>{description}</div>
-      <img style={{height: 125}}src={img}></img>
-
+      <div style={{ display: 'flex', justifyContent: 'center', border: '1px solid black' }}>
+        <div style={{ fontSize: 20, fontWeight: 'bold' }}>
+          {heading} (<a target='_blank' href={link}>link</a>)
+        </div>
+      </div>
+      <div style={{border: '1px solid black'}}>
+        <div>{description}</div>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <img alt='description' style={{ height: 150, margin: 10 }} src={img}></img>
+        </div>
+      </div>
     </div>
   )
 }
-const BioAndHistory = ({ setDisplay, setHeading, setDescription, setImg }) => {
+const BioAndHistory = ({ setDisplay, setHeading, setDescription, setImg, setLink }) => {
   // styles
   const bioContainer = {
     display: 'flex',
@@ -66,13 +72,17 @@ const BioAndHistory = ({ setDisplay, setHeading, setDescription, setImg }) => {
     margin: 5,
     alignItems: 'center'
   }
+  const bioInfo = {
+    fontSize: 17,
+  }
 
   // helper functions
-  const handleButton = (heading, description, img) => {
+  const handleButton = (heading, description, img, link) => {
     setHeading(heading)
     setDescription(description)
     setImg(img)
     setDisplay('Details')
+    setLink(link)
   }
 
   const displayHistory = (data) => {
@@ -87,7 +97,15 @@ const BioAndHistory = ({ setDisplay, setHeading, setDescription, setImg }) => {
         for (let nestedKey in data.history[key]) {
           if (data.history.hasOwnProperty(key)) {
             content.push(<button
-              onClick={() => handleButton(nestedKey, 'test_description', data.history[key][nestedKey].imgSource)}
+              key={nestedKey}
+              onClick={() => {
+                handleButton(
+                  nestedKey,
+                  data.history[key][nestedKey].description,
+                  data.history[key][nestedKey].imgSource,
+                  data.history[key][nestedKey].link
+                )
+              }}
               style={{
                 marginRight: 2,
                 width: 58,
@@ -101,7 +119,7 @@ const BioAndHistory = ({ setDisplay, setHeading, setDescription, setImg }) => {
         }
       }
       template.push(
-        <div style={{ display: 'flex' }}>
+        <div key={key} style={{ display: 'flex' }}>
           <div style={historyColumn1}>{key}:</div>
           <div style={historyColumn2}>{content}</div>
         </div>
@@ -115,8 +133,30 @@ const BioAndHistory = ({ setDisplay, setHeading, setDescription, setImg }) => {
       <div style={displayTitle}>Pokedex</div>
       {/* Display bio */}
       <div style={bioContainer}>
-        <div style={flexItem1}>item 1</div>
-        <div style={flexItem2}>item 2</div>
+        <div style={flexItem1}>
+          <div style={bioInfo}>Name: Vinayak Verma</div>
+          <div style={bioInfo}>Species: Developer</div>
+          <div style={bioInfo}>Github:
+            <a
+              href='https://github.com/vermaVinayak'
+              target="_blank"
+              rel="noopener noreferrer">
+              link
+            </a>
+          </div>
+          <div style={bioInfo}>LinkedIn:
+            <a
+              href='https://www.linkedin.com/in/vinayak-v-79497a137/'
+              target="_blank"
+              rel="noopener noreferrer">
+              link
+            </a>
+          </div>
+          <div style={bioInfo}>Email:
+            <a href='mailto:vinayak.vverma@gmail.com'>link</a>
+          </div>
+        </div>
+        <div style={flexItem2}><img alt='profile' style={{ height: 100, }} src={userData.userImage}></img></div>
       </div>
       {/* Display project, experience etc... */}
       {displayHistory(userData)}
@@ -128,6 +168,7 @@ const Display = () => {
   const [display, setDisplay] = useState('')
   const [heading, setHeading] = useState('')
   const [description, setDescription] = useState('')
+  const [link, setLink] = useState('link_test')
   const [img, setImg] = useState('')
 
   // conditional rendering
@@ -138,6 +179,7 @@ const Display = () => {
         heading={heading}
         description={description}
         img={img}
+        link={link}
       />
     )
   }
@@ -148,6 +190,7 @@ const Display = () => {
       setHeading={setHeading}
       setDescription={setDescription}
       setImg={setImg}
+      setLink={setLink}
     />
   )
 }
