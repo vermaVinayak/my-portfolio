@@ -16,10 +16,10 @@ const Details = ({ setDisplay, heading, description, img, link }) => {
       <button onClick={() => setDisplay('')}>back</button>
       <div style={{ display: 'flex', justifyContent: 'center', border: '1px solid black' }}>
         <div style={{ fontSize: 20, fontWeight: 'bold' }}>
-          {heading} (<a target='_blank' href={link}>link</a>)
+          {heading} (<a target='_blank' rel="noreferrer" href={link}>link</a>)
         </div>
       </div>
-      <div style={{border: '1px solid black'}}>
+      <div style={{ border: '1px solid black' }}>
         <div>{description}</div>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <img alt='description' style={{ height: 150, margin: 10 }} src={img}></img>
@@ -41,7 +41,8 @@ const BioAndHistory = ({ setDisplay, setHeading, setDescription, setImg, setLink
     width: 175,
     backgroundColor: 'yellow',
     border: '1px solid black',
-    margin: 5
+    margin: 5,
+    padding: 0
   }
   const flexItem2 = {
     height: 100,
@@ -73,7 +74,7 @@ const BioAndHistory = ({ setDisplay, setHeading, setDescription, setImg, setLink
     alignItems: 'center'
   }
   const bioInfo = {
-    fontSize: 17,
+    fontSize: 14,
   }
 
   // helper functions
@@ -110,7 +111,7 @@ const BioAndHistory = ({ setDisplay, setHeading, setDescription, setImg, setLink
                 marginRight: 2,
                 width: 58,
                 height: 20,
-                fontSize: 10,
+                fontSize: 8,
                 padding: 0
               }}>
               {nestedKey}
@@ -134,26 +135,28 @@ const BioAndHistory = ({ setDisplay, setHeading, setDescription, setImg, setLink
       {/* Display bio */}
       <div style={bioContainer}>
         <div style={flexItem1}>
-          <div style={bioInfo}>Name: Vinayak Verma</div>
-          <div style={bioInfo}>Species: Developer</div>
-          <div style={bioInfo}>Github:
-            <a
-              href='https://github.com/vermaVinayak'
-              target="_blank"
-              rel="noopener noreferrer">
-              link
-            </a>
-          </div>
-          <div style={bioInfo}>LinkedIn:
-            <a
-              href='https://www.linkedin.com/in/vinayak-v-79497a137/'
-              target="_blank"
-              rel="noopener noreferrer">
-              link
-            </a>
-          </div>
-          <div style={bioInfo}>Email:
-            <a href='mailto:vinayak.vverma@gmail.com'>link</a>
+          <div style={{marginLeft: 5, marginTop: 5}}>
+            <div style={bioInfo}>Name: Vinayak Verma</div>
+            <div style={bioInfo}>Species: Developer</div>
+            <div style={bioInfo}>Github:
+              <a
+                href='https://github.com/vermaVinayak'
+                target="_blank"
+                rel="noopener noreferrer">
+                link
+              </a>
+            </div>
+            <div style={bioInfo}>LinkedIn:
+              <a
+                href='https://www.linkedin.com/in/vinayak-v-79497a137/'
+                target="_blank"
+                rel="noopener noreferrer">
+                link
+              </a>
+            </div>
+            <div style={bioInfo}>Email:
+              <a href='mailto:vinayak.vverma@gmail.com'>link</a>
+            </div>
           </div>
         </div>
         <div style={flexItem2}><img alt='profile' style={{ height: 100, }} src={userData.userImage}></img></div>
@@ -205,25 +208,16 @@ const Device = () => {
     height: 125,
     transform: 'rotate(180deg)'
   }
-  const containerStyle = {
-    display: 'flex', // flexbox property
-    alignItems: 'center', // vertically centre child div
-    justifyContent: 'center', // horizontally center the child div
-    height: '100vh', // Set the height to 100% of the viewport height
-  }
   const deviceScreen = {
     backgroundColor: 'white',
+    width: 300,
   }
 
   return (
-    <div style={containerStyle}>
-      <div style={deviceScreen}>
-        <div style={{ backgroundColor: 'light green', width: 300, }}>
-          <img alt='device top cover' style={topCoverStyle} src={deviceCover}></img>
-          <Display />
-          <img alt='device bottom cover' style={bottomCoverStyle} src={deviceCover}></img>
-        </div>
-      </div>
+    <div style={deviceScreen}>
+      <img alt='device top cover' style={topCoverStyle} src={deviceCover}></img>
+      <Display />
+      <img alt='device bottom cover' style={bottomCoverStyle} src={deviceCover}></img>
     </div>
   )
 
@@ -232,8 +226,18 @@ const Device = () => {
   */
 }
 const Background = () => {
+
+  // styles
+  const backgroundStyle = {
+    display: 'flex', // flexbox property
+    alignItems: 'center', // vertically centre child div
+    justifyContent: 'center', // horizontally center the child div
+    backgroundColor: 'pink',
+    width: '100vw',
+    height: '100vh'
+  }
   return (
-    <div style={{ backgroundColor: 'pink', width: '100vw', height: '100vh' }}>
+    <div style={backgroundStyle}>
       <Device />
     </div>
   )

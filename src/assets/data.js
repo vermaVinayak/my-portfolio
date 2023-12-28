@@ -20,6 +20,10 @@ const userData = {
                 link: 'sdfsdfdf',
                 imgSource: '',
             },
+            eMonitor: {
+                link: 'sdfsdfdf',
+                imgSource: '',
+            },
         },
         Experience: {
             Asbuilt: {
