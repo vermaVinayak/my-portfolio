@@ -1,6 +1,7 @@
 import { useState } from 'react';
 // import image from './pokemonFightBackground.webp'
 import deviceCover from './assets/pokedexCover.png'
+import backgroundImage from './assets/beachFightBackground.webp'
 import userData from './assets/data'
 
 const Details = ({ setDisplay, heading, description, img, link }) => {
@@ -13,16 +14,16 @@ const Details = ({ setDisplay, heading, description, img, link }) => {
 
   return (
     <div style={detailsContainer}>
-      <button onClick={() => setDisplay('')}>back</button>
-      <div style={{ display: 'flex', justifyContent: 'center', border: '1px solid black' }}>
-        <div style={{ fontSize: 20, fontWeight: 'bold' }}>
-          {heading} (<a target='_blank' rel="noreferrer" href={link}>link</a>)
+      <button style={{color: 'white', backgroundColor: 'blue', marginBottom: 5}} onClick={() => setDisplay('')}>back</button>
+      <div style={{ display: 'flex', justifyContent: 'center', border: '1px solid white' }}>
+        <div style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>
+          {heading} (<a style={{color: 'white'}} target='_blank' rel="noreferrer" href={link}>link</a>)
         </div>
       </div>
-      <div style={{ border: '1px solid black' }}>
-        <div>{description}</div>
+      <div style={{ border: '1px solid white' }}>
+        <div style={{color: 'white', margin: 5}}>{description}</div>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <img alt='description' style={{ height: 150, margin: 10 }} src={img}></img>
+          <img alt='description' style={{ height: 150, marginTop: 0, marginBottom: 5 }} src={img}></img>
         </div>
       </div>
     </div>
@@ -32,14 +33,13 @@ const BioAndHistory = ({ setDisplay, setHeading, setDescription, setImg, setLink
   // styles
   const bioContainer = {
     display: 'flex',
-    backgroundColor: 'cyan',
     width: 300,
     justifyContent: 'flex-start'
   }
   const flexItem1 = {
     height: 100,
     width: 175,
-    backgroundColor: 'yellow',
+    // backgroundColor: 'yellow',
     border: '1px solid black',
     margin: 5,
     padding: 0
@@ -47,7 +47,7 @@ const BioAndHistory = ({ setDisplay, setHeading, setDescription, setImg, setLink
   const flexItem2 = {
     height: 100,
     width: 100,
-    backgroundColor: 'yellow',
+    // backgroundColor: 'yellow',
     border: '1px solid black',
     margin: 5
   }
@@ -55,19 +55,19 @@ const BioAndHistory = ({ setDisplay, setHeading, setDescription, setImg, setLink
     border: '1px solid white',
     display: 'flex',
     justifyContent: 'center',
-    backgroundColor: 'lightblue'
+    // backgroundColor: 'lightblue'
   }
   const historyColumn1 = {
     display: 'flex',
     alignItems: 'center',
-    backgroundColor: 'lightgreen',
+    // backgroundColor: 'lightgreen',
     width: 100,
     height: 25,
     margin: 5,
   }
   const historyColumn2 = {
     display: 'flex',
-    backgroundColor: 'orange',
+    // backgroundColor: 'orange',
     width: 175,
     height: 25,
     margin: 5,
@@ -75,6 +75,7 @@ const BioAndHistory = ({ setDisplay, setHeading, setDescription, setImg, setLink
   }
   const bioInfo = {
     fontSize: 14,
+    color: 'white'
   }
 
   // helper functions
@@ -129,7 +130,7 @@ const BioAndHistory = ({ setDisplay, setHeading, setDescription, setImg, setLink
     return template
   }
   return (
-    <div style={{ backgroundColor: 'purple' }}>
+    <div>
       {/* Display title */}
       <div style={displayTitle}>Pokedex</div>
       {/* Display bio */}
@@ -202,6 +203,7 @@ const Device = () => {
   const topCoverStyle = {
     width: 300,
     height: 125,
+    opacity: '1'
   }
   const bottomCoverStyle = {
     width: 300,
@@ -209,8 +211,12 @@ const Device = () => {
     transform: 'rotate(180deg)'
   }
   const deviceScreen = {
-    backgroundColor: 'white',
+    // backgroundColor: '#05b5fa',
+    // opacity: '0.8',
+    backgroundColor: 'rgba(25, 181, 250, 0.5)',
+    
     width: 300,
+    borderRadius: 30
   }
 
   return (
@@ -232,9 +238,12 @@ const Background = () => {
     display: 'flex', // flexbox property
     alignItems: 'center', // vertically centre child div
     justifyContent: 'center', // horizontally center the child div
-    backgroundColor: 'pink',
+    backgroundColor: '#37a647', // must have incase image does not exist
     width: '100vw',
-    height: '100vh'
+    height: '100vh',
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '125vw 100vh'
   }
   return (
     <div style={backgroundStyle}>
