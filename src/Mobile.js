@@ -14,16 +14,16 @@ const Details = ({ setDisplay, heading, description, img, link }) => {
 
   return (
     <div style={detailsContainer}>
-      <button style={{color: 'white', backgroundColor: 'blue', marginBottom: 5}} onClick={() => setDisplay('')}>back</button>
+      <button style={{ color: 'white', backgroundColor: '#17cdd4', marginBottom: 5 }} onClick={() => setDisplay('')}>back</button>
       <div style={{ display: 'flex', justifyContent: 'center', border: '1px solid white' }}>
         <div style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>
-          {heading} (<a style={{color: 'white'}} target='_blank' rel="noreferrer" href={link}>link</a>)
+          {heading} (<a style={{ color: 'white' }} target='_blank' rel="noreferrer" href={link}>link</a>)
         </div>
       </div>
       <div style={{ border: '1px solid white' }}>
-        <div style={{color: 'white', margin: 5}}>{description}</div>
+        <div style={{ color: 'white', margin: 5 }}>{description}</div>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <img alt='description' style={{ height: 150, marginTop: 0, marginBottom: 5 }} src={img}></img>
+          <img alt='description' style={{ marginTop: 0, marginBottom: 5 }} src={img}></img>
         </div>
       </div>
     </div>
@@ -40,7 +40,7 @@ const BioAndHistory = ({ setDisplay, setHeading, setDescription, setImg, setLink
     height: 100,
     width: 175,
     // backgroundColor: 'yellow',
-    border: '1px solid black',
+    border: '1px solid white',
     margin: 5,
     padding: 0
   }
@@ -48,13 +48,16 @@ const BioAndHistory = ({ setDisplay, setHeading, setDescription, setImg, setLink
     height: 100,
     width: 100,
     // backgroundColor: 'yellow',
-    border: '1px solid black',
+    border: '1px solid white',
     margin: 5
   }
   const displayTitle = {
     border: '1px solid white',
     display: 'flex',
     justifyContent: 'center',
+    color: 'white',
+    marginLeft: 5,
+    marginRight: 5,
     // backgroundColor: 'lightblue'
   }
   const historyColumn1 = {
@@ -64,6 +67,7 @@ const BioAndHistory = ({ setDisplay, setHeading, setDescription, setImg, setLink
     width: 100,
     height: 25,
     margin: 5,
+    color: 'white'
   }
   const historyColumn2 = {
     display: 'flex',
@@ -71,7 +75,7 @@ const BioAndHistory = ({ setDisplay, setHeading, setDescription, setImg, setLink
     width: 175,
     height: 25,
     margin: 5,
-    alignItems: 'center'
+    alignItems: 'center',
   }
   const bioInfo = {
     fontSize: 14,
@@ -110,10 +114,12 @@ const BioAndHistory = ({ setDisplay, setHeading, setDescription, setImg, setLink
               }}
               style={{
                 marginRight: 2,
-                width: 58,
+                width: 55,
                 height: 20,
                 fontSize: 8,
-                padding: 0
+                padding: 0,
+                color: 'white',
+                backgroundColor: '#17cdd4'
               }}>
               {nestedKey}
             </button>)
@@ -127,7 +133,7 @@ const BioAndHistory = ({ setDisplay, setHeading, setDescription, setImg, setLink
         </div>
       )
     }
-    return template
+    return <div style={{ border: '1px solid white', marginBottom: 5, marginLeft: 5, marginRight: 5}}>{template}</div>
   }
   return (
     <div>
@@ -136,14 +142,16 @@ const BioAndHistory = ({ setDisplay, setHeading, setDescription, setImg, setLink
       {/* Display bio */}
       <div style={bioContainer}>
         <div style={flexItem1}>
-          <div style={{marginLeft: 5, marginTop: 5}}>
+          <div style={{ marginLeft: 5, marginTop: 5 }}>
             <div style={bioInfo}>Name: Vinayak Verma</div>
             <div style={bioInfo}>Species: Developer</div>
             <div style={bioInfo}>Github:
               <a
                 href='https://github.com/vermaVinayak'
                 target="_blank"
-                rel="noopener noreferrer">
+                rel="noopener noreferrer"
+                style={{ color: 'white' }}
+              >
                 link
               </a>
             </div>
@@ -151,12 +159,14 @@ const BioAndHistory = ({ setDisplay, setHeading, setDescription, setImg, setLink
               <a
                 href='https://www.linkedin.com/in/vinayak-v-79497a137/'
                 target="_blank"
-                rel="noopener noreferrer">
+                rel="noopener noreferrer"
+                style={{ color: 'white' }}
+              >
                 link
               </a>
             </div>
             <div style={bioInfo}>Email:
-              <a href='mailto:vinayak.vverma@gmail.com'>link</a>
+              <a style={{color: 'white'}} href='mailto:vinayak.vverma@gmail.com'>link</a>
             </div>
           </div>
         </div>
@@ -214,7 +224,7 @@ const Device = () => {
     // backgroundColor: '#05b5fa',
     // opacity: '0.8',
     backgroundColor: 'rgba(25, 181, 250, 0.5)',
-    
+    height: 490,
     width: 300,
     borderRadius: 30
   }

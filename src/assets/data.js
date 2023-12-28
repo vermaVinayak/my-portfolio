@@ -1,6 +1,7 @@
 import userImage from './profilePic2Edited.png'
-import shortcutsTeamImage from './shortcutsTeam.jpeg'
-
+import shortcutsTeamImage from './shortcutsTeamUpdated.png'
+import ministryLogo from './ministryOfEducationLogoUpdated.png'
+import eMonitorScreen from './eMonitorSmallerUpdated.png'
 const userData = {
     name: 'Vinayak Verma',
     userImage: userImage,
@@ -17,12 +18,24 @@ const userData = {
                 imgSource: shortcutsTeamImage
             },
             pronounce: {
-                link: 'sdfsdfdf',
-                imgSource: '',
+                link: 'https://namehub-d7807.firebaseapp.com/database',
+                description: `
+                    In high school, I addressed the cultural issue of mispronounced 
+                    names through a web application. Developing a platform that stored and provided 
+                    access to correct pronunciations. This endeavor underscored my commitment to 
+                    leveraging technology for positive social impact.
+                `,
+                imgSource: ministryLogo,
             },
             eMonitor: {
-                link: 'sdfsdfdf',
-                imgSource: '',
+                link: 'https://github.com/vermaVinayak/Smart-Energy-Monitor-UI',
+                description: `
+                    This project showcases my knowledge in using plain HTML, CSS and JS.
+                    Working on an embedded systems project. I tasked myself to develop an UI 
+                    to interact with our microcontroller. This inlclues Windows Task manager like 
+                    theme display and buttons to turn on physical components.
+                `,
+                imgSource: eMonitorScreen,
             },
         },
         Experience: {
