@@ -2,6 +2,11 @@ import userImage from './profilePic2Edited.png'
 import shortcutsTeamImage from './shortcutsTeamUpdated.png'
 import ministryLogo from './ministryOfEducationLogoUpdated.png'
 import eMonitorScreen from './eMonitorSmallerUpdated.png'
+import asbuiltImage from './asbuiltGetTogetherUpdated.jpg'
+import part1AssistanceImage from './part1AssistanceCentreUpdated.jpg'
+import carloImage from './carloImageUpdated.jpg'
+import anthonyImage from './garyOakImageUpdated.jpg'
+
 const userData = {
     name: 'Vinayak Verma',
     userImage: userImage,
@@ -22,8 +27,8 @@ const userData = {
                 description: `
                     In high school, I addressed the cultural issue of mispronounced 
                     names through a web application. Developing a platform that stored and provided 
-                    access to correct pronunciations. This endeavor underscored my commitment to 
-                    leveraging technology for positive social impact.
+                    access to correct pronunciations. This underscored my commitment 
+                    for positive social impact.
                 `,
                 imgSource: ministryLogo,
             },
@@ -32,30 +37,53 @@ const userData = {
                 description: `
                     This project showcases my knowledge in using plain HTML, CSS and JS.
                     Working on an embedded systems project. I tasked myself to develop an UI 
-                    to interact with our microcontroller. This inlclues Windows Task manager like 
-                    theme display and buttons to turn on physical components.
+                    to interact with our microcontroller. This includes Windows Task manager themed UI.
                 `,
                 imgSource: eMonitorScreen,
             },
         },
         Experience: {
             Asbuilt: {
-                bio: 'ksdfkdsf',
-                projectInfo: 'sdfsdfsdf',
+                link: 'ksdfkdsf',
+                description: `
+                    During my 3-month internship at Asbuilt Digital, 
+                    I honed my skills in machine learning, data analysis, 
+                    and object-oriented programming (OOP) with Python. 
+                `,
+                imgSource: asbuiltImage,
             },
-            Tutor: {
-                bio: 'ksdfkdsf',
-                projectInfo: 'sdfsdfsdf',
+            Mentor: {
+                link: 'ksdfkdsf',
+                description: `
+                     Leadership, perseverance and humility are qualities I got an opportunity to 
+                     exercise while mentoring. This experience has enhanced my emotional intelligence 
+                     which is directly linked to my teamwork.
+                `,
+                imgSource: part1AssistanceImage,
             }
         },
-        reference: {
+        References: {
             Carlo: {
-                bio: 'ksdfkdsf',
-                projectInfo: 'sdfsdfsdf',
+                link: `https:/www.linkedin.com/in/carlo- carbonilla-02050b190/`,
+                description: (<div>
+                    Carlo Carbonilla
+                    <br />
+                    Junior Data Scientist @ AsbuiltDigital
+                    <br />
+                    Click on link to forward to his LinkedIn.
+                </div>),
+                imgSource: carloImage,
             },
             Anthony: {
-                bio: 'ksdfkdsf',
-                projectInfo: 'sdfsdfsdf',
+                link: `blank`,
+                description: (<div>
+                    Anthony Hunter
+                    <br />
+                    Manager @ Dollar Dealers
+                    <br />
+                    Phone no: 020 4085 6561
+                </div>),
+                imgSource: anthonyImage,
             }
         },
     }
